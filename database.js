@@ -4,7 +4,6 @@ user.push({
 	id : 1,
 	login : 'admin',
 	password : '123',
-	online : false,
 	sid : null
 });
 
@@ -12,7 +11,6 @@ user.push({
 	id : 2,
 	login : 'user',
 	password : 'user',
-	online : false,
 	sid : null
 });
 
@@ -20,23 +18,22 @@ user.push({
 	id : 3,
 	login : 'red',
 	password : 'red',
-	online : false,
 	sid : null
 });
 
 exports.userVerif = (reqUser) => {
-	var answer = false;
 
-	user.forEach((item) => {
-		if (item.login === reqUser.login && item.password === reqUser.password) {
-			item.sid = Math.floor((Math.random() * 100) + 1);
-			item.online = true;
-			answer = item.sid;
-			return;
+	for (var i = 0; i < user.length; i++) {
+
+		if (user[i].login === reqUser.login && user[i].password === reqUser.password) {			
+
+			user[i].sid = Math.floor((Math.random() * 100) + 1);
+			return user[i].sid;
+
 		}
-	});
 
-	return answer;
+	}
+	
 };
 
 exports.getUserBySid = (sid) => {
