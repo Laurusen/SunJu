@@ -1,4 +1,4 @@
-var handler = require('./handler');
+var	handler = require('./handler');
 
 exports.run = (req, res) => {
 	pageName = req.url.split('/')[1];
